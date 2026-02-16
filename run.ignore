@@ -1,0 +1,3 @@
+./gradlew build
+docker build -t travel-poi-service .
+docker run -p 8082:8082 travel-poi-service

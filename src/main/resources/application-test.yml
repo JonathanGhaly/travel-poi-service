@@ -6,4 +6,10 @@ spring:
     password:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
+
+    flyway:
+      enabled: true
+
+    cache:
+      type: none

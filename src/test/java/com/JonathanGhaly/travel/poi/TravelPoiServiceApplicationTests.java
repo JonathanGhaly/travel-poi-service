@@ -1,4 +1,4 @@
-package com.JonathjanGhaly.travel.poi;
+package com.JonathanGhaly.travel.poi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

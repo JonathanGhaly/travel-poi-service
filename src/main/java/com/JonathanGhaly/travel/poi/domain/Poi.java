@@ -23,6 +23,7 @@ public class Poi {
 
     @Id
     @Column(name = "uuid", nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false)

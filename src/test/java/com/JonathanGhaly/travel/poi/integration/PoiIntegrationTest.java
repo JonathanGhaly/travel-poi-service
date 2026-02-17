@@ -48,6 +48,6 @@ class PoiIntegrationTest {
                 .build();
 
         Poi saved = repository.save(poi);
-        assertNotNull(saved.getUuid());
+        assertNotNull(saved.getId());
     }
 }

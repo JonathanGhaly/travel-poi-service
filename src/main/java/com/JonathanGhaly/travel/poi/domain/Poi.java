@@ -18,7 +18,6 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-// 1. REMOVED @TypeDef - It is no longer needed in Hibernate 6
 public class Poi {
 
     @Id

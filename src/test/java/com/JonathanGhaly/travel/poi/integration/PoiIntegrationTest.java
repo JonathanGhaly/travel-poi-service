@@ -23,9 +23,9 @@ class PoiIntegrationTest {
 
     @Container
     static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15")
-            .withDatabaseName("poi_db")
+            .withDatabaseName("travel_poi")
             .withUsername("postgres")
-            .withPassword("password");
+            .withPassword("postgres");
 
     @DynamicPropertySource
     static void registerProperties(DynamicPropertyRegistry registry) {

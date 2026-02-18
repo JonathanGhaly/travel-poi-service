@@ -1,6 +1,8 @@
 package com.JonathanGhaly.travel.poi.exception;
 
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +30,8 @@ public class GlobalExceptionHandler {
                 .getFieldErrors()
                 .stream()
                 .collect(Collectors.toMap(
-                        fieldError -> fieldError.getField(),
-                        fieldError -> fieldError.getDefaultMessage(),
+                        FieldError::getField,
+                        DefaultMessageSourceResolvable::getDefaultMessage,
                         (msg1, msg2) -> msg1
                 ));
 

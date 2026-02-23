@@ -21,5 +21,9 @@ public interface PoiService {
 
     PoiResponseDto patch(UUID id, PoiRequestDto dto);
 
+    void addTagToPoi(UUID poiUuid, String tagName);
+
+    List<PoiResponseDto> getByTagName(String tagName);
+
     void delete(UUID id);
 }

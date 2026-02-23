@@ -46,14 +46,14 @@ public class Poi {
     @Column(name = "opening_hours", columnDefinition = "jsonb", nullable = false)
     private Map<String, Object> openingHours;
 
-    @ElementCollection
-    @CollectionTable(
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
             name = "poi_tags",
-            joinColumns = @JoinColumn(name = "poi_id")
+            joinColumns = @JoinColumn(name = "poi_uuid"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    @Column(name = "tag")
-    @Builder.Default // 3. Added @Builder.Default to prevent tags being null when using Builder
-    private Set<String> tags = new HashSet<>();
+    private Set<Tag> tags = new HashSet<>();
 
     @Column(name = "created_at", updatable = false)
     private OffsetDateTime createdAt;
@@ -69,7 +69,7 @@ public class Poi {
     }
 
     @PreUpdate
-    protected void onUpdate() {
+    protected void onUpdate()  {
         updatedAt = OffsetDateTime.now();
     }
 }

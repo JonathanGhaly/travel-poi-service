@@ -7,6 +7,7 @@ import com.JonathanGhaly.travel.poi.service.PoiService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -62,7 +63,18 @@ public class PoiController {
     ) {
         return service.patch(id, request);
     }
-
+    @PostMapping("/{poiId}/tags")
+    public ResponseEntity<Void> addTagToPoi(
+            @PathVariable UUID poiId,
+            @RequestParam String tagName
+    ) {
+        service.addTagToPoi(poiId, tagName);
+        return ResponseEntity.ok().build();
+    }
+    @GetMapping("/by-tag/{tagName}")
+    public List<PoiResponseDto> getPoisByTag(@PathVariable String tagName) {
+        return service.getByTagName(tagName);
+    }
     /**
      * Delete POI
      */

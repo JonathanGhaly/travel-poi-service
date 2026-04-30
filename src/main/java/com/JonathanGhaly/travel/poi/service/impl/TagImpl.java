@@ -3,24 +3,28 @@ package com.JonathanGhaly.travel.poi.service.impl;
 import com.JonathanGhaly.travel.poi.domain.Tag;
 import com.JonathanGhaly.travel.poi.repository.TagRepository;
 import com.JonathanGhaly.travel.poi.service.TagService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor // ADD THIS TO INJECT THE REPOSITORY
 public class TagImpl implements TagService {
-    private TagRepository tagRepository;
+
+    private final TagRepository tagRepository; // MAKE THIS FINAL
+
     @Override
     public Tag create(String name) {
         if (tagRepository.existsByName(name)) {
             throw new IllegalArgumentException("Tag with name " + name + " already exists");
         }
         return tagRepository.save(
-         Tag.builder()
-                 .name(name)
-                 .createdAt(OffsetDateTime.now())
-                 .build()
+                Tag.builder()
+                        .name(name)
+                        .createdAt(OffsetDateTime.now())
+                        .build()
         );
     }
 
